@@ -1,129 +1,120 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>SwiftShop Belize City</title>
 
-  <title>SwiftShop</title>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="manifest" href="manifest.json">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="manifest" href="manifest.json">
+<style>
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#fff;
+}
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #ffffff;
-    }
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+  display:block;
+}
+</style>
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-  </style>
 </head>
 
 <body>
-  <iframe
-    src="https://script.google.com/macros/s/AKfycbwKXDehG-CBdLW8wW3SCRYo46nRpva74TO_QGbHixW-Tca4EJUDrA1VlW8jS5t-yS6bPQ/exec"
-    allow="geolocation; clipboard-read; clipboard-write"
-    style="width:100%;height:100%;border:none;"
-  ></iframe>
+
+<iframe
+  src="https://script.google.com/macros/s/AKfycbwKXDehG-CBdLW8wW3SCRYo46nRpva74TO_QGbHixW-Tca4EJUDrA1VlW8jS5t-yS6bPQ/exec"
+  allow="geolocation; clipboard-read; clipboard-write">
+</iframe>
 
 <script>
-(function() {
-  var ua = navigator.userAgent || navigator.vendor || window.opera;
-  var isInApp = /Instagram|FBAN|FBAV/i.test(ua);
+(function () {
 
-  if (isInApp) {
-    var frame = document.querySelector("iframe");
-    if (frame) frame.style.display = "none";
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isInApp = /Instagram|FBAN|FBAV/i.test(ua);
 
-    var overlay = document.createElement("div");
-    overlay.style.position = "fixed";
-    overlay.style.top = "0";
-    overlay.style.left = "0";
-    overlay.style.width = "100%";
-    overlay.style.height = "100%";
-    overlay.style.background = "#ffffff";
-    overlay.style.zIndex = "9999";
-    overlay.style.display = "flex";
-    overlay.style.flexDirection = "column";
-    overlay.style.justifyContent = "center";
-    overlay.style.alignItems = "center";
-    overlay.style.textAlign = "center";
-    overlay.style.padding = "20px";
-    overlay.style.fontFamily = "Arial, sans-serif";
+  if (!isInApp) return;
 
-    overlay.innerHTML = `
-      <div style="max-width:320px;">
-        <h2 style="font-size:22px; margin-bottom:10px;">⚠️ Open in Browser</h2>
+  const frame = document.querySelector("iframe");
+  if (frame) frame.style.display = "none";
 
-        <p style="font-size:15px; margin-bottom:20px; color:#444;">
-          This app cannot run properly inside Instagram or Facebook.
-        </p>
+  const overlay = document.createElement("div");
 
-        <div style="text-align:left; margin-bottom:25px; font-size:15px;">
-          <div style="margin-bottom:10px;">1️⃣ Tap <b>⋮ (top right)</b></div>
-          <div style="margin-bottom:10px;">2️⃣ Tap <b>"Open in Browser"</b></div>
-        </div>
+  overlay.style.cssText = `
+    position:fixed;
+    inset:0;
+    background:#fff;
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    font-family:Arial,sans-serif;
+  `;
 
-        <p style="font-size:14px; margin-bottom:15px; color:#666;">
-          OR use the options below:
-        </p>
+  overlay.innerHTML = `
+    <div style="max-width:320px;">
+      <h2>⚠️ Open in Browser</h2>
 
-        <button onclick="tryOpen()" style="
+      <p>
+        SwiftShop cannot run properly inside Instagram or Facebook.
+      </p>
+
+      <p>
+        1️⃣ Tap ⋮ (top right)<br>
+        2️⃣ Tap "Open in Browser"
+      </p>
+
+      <button onclick="tryOpen()"
+        style="
           width:100%;
           padding:15px;
           margin-bottom:10px;
-          font-size:16px;
           border:none;
           border-radius:10px;
-          background:black;
-          color:white;
-          cursor:pointer;
-        ">
-          Try Open in Browser
-        </button>
+          background:#000;
+          color:#fff;
+          cursor:pointer;">
+        Open in Browser
+      </button>
 
-        <button onclick="copyLink()" style="
+      <button onclick="copyLink()"
+        style="
           width:100%;
           padding:15px;
-          font-size:16px;
           border:none;
           border-radius:10px;
           background:#eee;
-          color:black;
-          cursor:pointer;
-        ">
-          Copy Link
-        </button>
-      </div>
-    `;
+          cursor:pointer;">
+        Copy Link
+      </button>
+    </div>
+  `;
 
-    document.body.appendChild(overlay);
-  }
+  document.body.appendChild(overlay);
+
 })();
 
 function tryOpen() {
-  var url = window.location.href;
-  window.open(url, "_blank");
+  window.open(window.location.href, "_blank");
 }
 
 function copyLink() {
-  var url = window.location.href;
-
-  navigator.clipboard.writeText(url).then(function() {
-    alert("Link copied! Paste it in Chrome or Safari.");
-  }).catch(function() {
-    alert("Copy failed. Please manually copy the link.");
-  });
+  navigator.clipboard.writeText(window.location.href)
+    .then(() => alert("Link copied successfully"))
+    .catch(() => alert("Unable to copy link"));
 }
 </script>
 
